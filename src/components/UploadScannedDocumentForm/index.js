@@ -135,7 +135,7 @@ function UploadScannedDocumentForm() {
       <UploadFileModal
         show={modalShow}
         onHide={() => setModalShow(false)}
-        error={error}
+        error={error ? 1 : 0}
       />
     </>
   )
