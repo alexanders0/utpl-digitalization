@@ -10,19 +10,26 @@ import Col from 'react-bootstrap/Col';
 import Image from 'react-bootstrap/Image';
 import Badge from 'react-bootstrap/Badge';
 import { MdScanner } from 'react-icons/md';
+import { AiOutlineClear } from 'react-icons/ai';
 
 /* global scanner */
 
 function Scan(props) {
 
   const {
-    scannedDocuments,
-    setScannedDocuments
+    setScannedDocuments,
+    isScanning,
+    setScanning
   } = React.useContext(DigitalizationContext);
 
   const [scannedImages, setScannedImages] = React.useState([]);
   const [scannedThumbnails, setScannedThumbnails] = React.useState([]);
-  const [isScanning, setScanning] = React.useState(false);
+
+  const cleanScanner = () => {
+    setScannedImages([]);
+    setScannedThumbnails([]);
+    setScannedDocuments([]);
+  };
 
   const addScannedImage = (scannedImage) => {
     setScannedImages(prevScannedImages => {
@@ -92,8 +99,7 @@ function Scan(props) {
 
         // Document separation
         "doc_separators": [ /** applicable for PDF and TIFF formats only. */
-            //"blank:DOC_SEP",  /** Use blank sheets to separate documents. */
-            
+            props.blankPageSeparator  /** Use blank sheets to separate documents. */
         ],
 
         // --------------- Output Settings ---------------
@@ -156,24 +162,35 @@ function Scan(props) {
   return (
     <>
       <Container>
-          <Button
-            variant="primary"
-            size="sm"
-            type="submit"
-            disabled={isScanning}
-            onClick={scanDocument}
-          >
-            {isScanning ?
-              <Spinner
+        <Button
+          className="m-1"
+          variant="primary"
+          size="sm"
+          type="submit"
+          disabled={isScanning}
+          onClick={scanDocument}
+        >
+          {isScanning ?
+            <Spinner
               as="span"
               animation="border"
               size="sm"
               role="status"
               aria-hidden="true"
-              />: <MdScanner />
-            }
-            {isScanning ? ' Scanning…' : 'Scan'}
-          </Button>
+            />: <MdScanner />
+          }
+          {isScanning ? ' Scanning…' : 'Scan'}
+        </Button>
+
+        <Button
+          className="m-1"
+          variant="primary"
+          size="sm"
+          type="submit"
+          onClick={cleanScanner}
+        >
+          <AiOutlineClear />Clear
+        </Button>
       </Container>
 
       <Container>

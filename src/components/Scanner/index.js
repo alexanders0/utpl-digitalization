@@ -13,6 +13,7 @@ function Scanner() {
   const [paperSize, setPaperSize] = React.useState('TWSS_A4');
   const [detectBlankPages, setDetectBlankPages] = React.useState('false');
   const [keepBlankPages, setKeepBlankPages] = React.useState('keep');
+  const [blankPageSeparator, setBlankPageSeparator] = React.useState("");
 
   let colorModeOptions = [
     { value: "TWPT_RGB", label: "Color" },
@@ -45,9 +46,14 @@ function Scanner() {
     { value: "remove", label: "No" },
   ]
 
+  let blankPageSeparatorOptions = [
+    { value: "blank:DOC_SEP", label: "Yes" },
+    { value: "", label: "No" },
+  ]
+
   return (
     <>
-      <Container>
+      <Container className="mt-3">
         <Form>
           <Row>
             <Col xs={6} md={3}>
@@ -76,12 +82,23 @@ function Scanner() {
                 setParameterValue={setDetectBlankPages}
                 options={DetectBlankPagesOptions}
               />
-              <ScanParameter
-                label="Keep Blank Pages"
-                parameterValue={keepBlankPages}
-                setParameterValue={setKeepBlankPages}
-                options={keepBlankPagesOptions}
-              />
+              {detectBlankPages === "true" ?
+                <>
+                  <ScanParameter
+                    label="Keep Blank Pages"
+                    parameterValue={keepBlankPages}
+                    setParameterValue={setKeepBlankPages}
+                    options={keepBlankPagesOptions}
+                  />
+                  <ScanParameter
+                    label="Document Separator (Blank Page)"
+                    parameterValue={blankPageSeparator}
+                    setParameterValue={setBlankPageSeparator}
+                    options={blankPageSeparatorOptions}
+                  />
+                </>
+              : null }
+
             </Col>
             <Col xs={12} md={8}>
               <Scan
@@ -90,6 +107,7 @@ function Scanner() {
                 paperSize={paperSize}
                 detectBlankPages={detectBlankPages}
                 keepBlankPages={keepBlankPages}
+                blankPageSeparator={blankPageSeparator}
               />
             </Col>
           </Row>
