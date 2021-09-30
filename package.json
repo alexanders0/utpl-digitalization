@@ -1,4 +1,5 @@
 {
+  "homepage": "https://alexanders0.github.io/utpl-digitalization",
   "name": "utpl-digitalization",
   "version": "0.1.0",
   "private": true,
@@ -43,7 +44,6 @@
     ]
   },
   "devDependencies": {
-    "gh-pages": "^3.2.3",
-    "homepage": "https://alexanders0.github.io/utpl-digitalization"
+    "gh-pages": "^3.2.3"
   }
 }
