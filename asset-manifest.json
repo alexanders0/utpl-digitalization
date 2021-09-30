@@ -1,0 +1,26 @@
+{
+  "files": {
+    "main.css": "/utpl-digitalization/static/css/main.6dea0f05.chunk.css",
+    "main.js": "/utpl-digitalization/static/js/main.1925b200.chunk.js",
+    "main.js.map": "/utpl-digitalization/static/js/main.1925b200.chunk.js.map",
+    "runtime-main.js": "/utpl-digitalization/static/js/runtime-main.8a8e1ef5.js",
+    "runtime-main.js.map": "/utpl-digitalization/static/js/runtime-main.8a8e1ef5.js.map",
+    "static/css/2.f2512455.chunk.css": "/utpl-digitalization/static/css/2.f2512455.chunk.css",
+    "static/js/2.e28e5e15.chunk.js": "/utpl-digitalization/static/js/2.e28e5e15.chunk.js",
+    "static/js/2.e28e5e15.chunk.js.map": "/utpl-digitalization/static/js/2.e28e5e15.chunk.js.map",
+    "static/js/3.431afeee.chunk.js": "/utpl-digitalization/static/js/3.431afeee.chunk.js",
+    "static/js/3.431afeee.chunk.js.map": "/utpl-digitalization/static/js/3.431afeee.chunk.js.map",
+    "index.html": "/utpl-digitalization/index.html",
+    "static/css/2.f2512455.chunk.css.map": "/utpl-digitalization/static/css/2.f2512455.chunk.css.map",
+    "static/css/main.6dea0f05.chunk.css.map": "/utpl-digitalization/static/css/main.6dea0f05.chunk.css.map",
+    "static/js/2.e28e5e15.chunk.js.LICENSE.txt": "/utpl-digitalization/static/js/2.e28e5e15.chunk.js.LICENSE.txt",
+    "static/media/utpl_logo.92719d4e.png": "/utpl-digitalization/static/media/utpl_logo.92719d4e.png"
+  },
+  "entrypoints": [
+    "static/js/runtime-main.8a8e1ef5.js",
+    "static/css/2.f2512455.chunk.css",
+    "static/js/2.e28e5e15.chunk.js",
+    "static/css/main.6dea0f05.chunk.css",
+    "static/js/main.1925b200.chunk.js"
+  ]
+}
