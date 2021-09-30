@@ -11,14 +11,16 @@ function Scanner() {
   const [colorMode, setColorMode] = React.useState('TWPT_RGB');
   const [resolution, setResolution] = React.useState('200');
   const [paperSize, setPaperSize] = React.useState('TWSS_A4');
+  const [detectBlankPages, setDetectBlankPages] = React.useState('false');
+  const [keepBlankPages, setKeepBlankPages] = React.useState('keep');
 
-  let colorModes = [
+  let colorModeOptions = [
     { value: "TWPT_RGB", label: "Color" },
     { value: "TWPT_GRAY", label: "Gris" },
     { value: "TWPT_BW", label: "Blanco/Negro" },
   ]
 
-  let resolutions = [
+  let resolutionsOptions = [
     { value: "100", label: "100" },
     { value: "150", label: "150" },
     { value: "200", label: "200" },
@@ -28,9 +30,19 @@ function Scanner() {
     { value: "400", label: "400" },
   ]
 
-  let paperSizes = [
+  let paperSizesOptions = [
     { value: "TWSS_A4", label: "A4" },
     { value: "TWSS_USLETTER", label: "Carta" },
+  ]
+
+  let DetectBlankPagesOptions = [
+    { value: "true", label: "Yes" },
+    { value: "false", label: "No" },
+  ]
+
+  let keepBlankPagesOptions = [
+    { value: "keep", label: "Yes" },
+    { value: "remove", label: "No" },
   ]
 
   return (
@@ -44,19 +56,31 @@ function Scanner() {
                 label="Color mode"
                 parameterValue={colorMode}
                 setParameterValue={setColorMode}
-                options={colorModes}
+                options={colorModeOptions}
               />
               <ScanParameter
                 label="Resolution (DPI)"
                 parameterValue={resolution}
                 setParameterValue={setResolution}
-                options={resolutions}
+                options={resolutionsOptions}
               />
               <ScanParameter
                 label="Paper Size"
                 parameterValue={paperSize}
                 setParameterValue={setPaperSize}
-                options={paperSizes}
+                options={paperSizesOptions}
+              />
+              <ScanParameter
+                label="Detect Blank Pages"
+                parameterValue={detectBlankPages}
+                setParameterValue={setDetectBlankPages}
+                options={DetectBlankPagesOptions}
+              />
+              <ScanParameter
+                label="Keep Blank Pages"
+                parameterValue={keepBlankPages}
+                setParameterValue={setKeepBlankPages}
+                options={keepBlankPagesOptions}
               />
             </Col>
             <Col xs={12} md={8}>
@@ -64,6 +88,8 @@ function Scanner() {
                 colorMode={colorMode}
                 resolution={resolution}
                 paperSize={paperSize}
+                detectBlankPages={detectBlankPages}
+                keepBlankPages={keepBlankPages}
               />
             </Col>
           </Row>

@@ -25,24 +25,30 @@ function Scan(props) {
   const [isScanning, setScanning] = React.useState(false);
 
   const addScannedImage = (scannedImage) => {
-    setScannedImages([
-      ...scannedImages,
-      scannedImage
-    ]);
+    setScannedImages(prevScannedImages => {
+      return [
+        ...prevScannedImages,
+        scannedImage
+      ]
+    })
   };
 
   const addScannedThumbnail = (scannedThumbnail) => {
-    setScannedThumbnails([
-      ...scannedThumbnails,
-      scannedThumbnail
-    ]);
+    setScannedThumbnails(prevThumbnails => {
+      return [
+        ...prevThumbnails,
+        scannedThumbnail
+      ]
+    })
   };
 
   const addScannedDocument = (scannedDocument) => {
-    setScannedDocuments([
-      ...scannedDocuments,
-      scannedDocument
-    ]);
+    setScannedDocuments(prevScannedDocuments => {
+      return [
+        ...prevScannedDocuments,
+        scannedDocument
+      ]
+    })
   };
 
   const fixBinary = (bin) => {
@@ -68,7 +74,8 @@ function Scan(props) {
     scanner.scan(
       displayImagesOnPage,
       {
-        "use_asprise_dialog": false,      
+        "use_asprise_dialog": false,
+        "prompt_scan_more":  true, /** Default value: false */    
         // --------------- Scan Settings ---------------      
         "twain_cap_setting" : {
             "ICAP_PIXELTYPE" : props.colorMode,
@@ -78,14 +85,15 @@ function Scan(props) {
         },
         // --------------- Processing Settings ---------------
         // Blank page detection/discard
-        "detect_blank_pages": "true", /** Default value: false */
+        "detect_blank_pages": props.detectBlankPages, /** Default value: false */
         "blank_page_threshold": "0.0001",
         "blank_page_margin_percent": "8",
-        "blank_page_policy": "remove", /** "keep" (default) or "remove" */
+        "blank_page_policy": props.keepBlankPages,
 
         // Document separation
         "doc_separators": [ /** applicable for PDF and TIFF formats only. */
-            "blank:DOC_SEP",  /** Use blank sheets to separate documents. */
+            //"blank:DOC_SEP",  /** Use blank sheets to separate documents. */
+            
         ],
 
         // --------------- Output Settings ---------------
@@ -170,6 +178,8 @@ function Scan(props) {
 
       <Container>
         <Row>
+          <p>Longitud imagesScanned: {scannedImages.length}</p>
+          <p>Longitud Thumbnails: {scannedThumbnails.length}</p>
           {
             scannedThumbnails.map(
               (scannedThumbnail, index) => 
